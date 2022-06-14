@@ -1,0 +1,22 @@
+
+<h2>My Players</h2>
+
+<div>
+  <label for="new-player">Player name: </label>
+  <input id="new-player" #playerName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(playerName.value); playerName.value=''">
+    Add player
+  </button>
+</div>
+
+<ul class="players">
+  <li *ngFor="let player of players">
+    <a routerLink="/detail/{{player.id}}">
+      <span class="badge">{{player.id}}</span> {{player.name}}
+    </a>
+    <button type="button" class="delete" title="delete player"
+      (click)="delete(player)">Delete</button>
+  </li>
+</ul>
